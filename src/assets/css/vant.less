@@ -1,0 +1,132 @@
+.van {
+  &-cell {
+    --van-field-placeholder-text-color: @neutral-9;
+  }
+}
+
+.vant {
+  @import (reference) "@/assets/css/standard.less";
+  &__range {
+    &__input {
+      .van-cell {
+        padding: 0;
+        border-radius: 20px;
+      }
+
+      .van-field__control {
+        flex: 1;
+        height: 40px;
+        text-align: center;
+        background-color: @bg-grey;
+        color: @theme-black;
+      }
+    }
+  }
+
+  &__button {
+    &--submit {
+      .van-button--normal {
+        flex: 1;
+        height: 48px;
+        line-height: 48px;
+        border-radius: 25px;
+        background-color: @theme-green;
+        text-align: center;
+        color: white;
+        border: none;
+      }
+    }
+  }
+
+  &__dropdown {
+    .van-dropdown-menu__bar {
+      height: 40px;
+      box-shadow: none;
+      border-bottom: 1px solid @border-grey;
+      background-color: transparent;
+    }
+    &--expand {
+      .van-dropdown-menu__bar {
+        background-color: white;
+      }
+    }
+
+    .van-dropdown-menu__title--active {
+      color: @theme-green;
+    }
+
+    .van-dropdown-menu__title {
+      .font--t5();
+      color: @neutral-9;
+    }
+
+    &--filter {
+      .van-dropdown-item__content {
+        height: 80%;
+      }
+    }
+  }
+
+  &__tab {
+    .van-tab {
+      color: @neutral-9;
+
+      &--active {
+        color: @theme-green;
+      }
+    }
+
+    .van-tabs {
+      margin: 0 -15px;
+      height: 100%;
+
+      .van-sticky--fixed {
+        padding: 0 15px;
+        background-color: white;
+      }
+
+      .van-tabs__content {
+        padding: 0 15px;
+      }
+
+      &__line {
+        bottom: 20px;
+        width: calc(var(--van-tabs-bottom-bar-width) - 20px);
+        background-color: @theme-green;
+      }
+
+      &__nav {
+        background-color: transparent;
+      }
+    }
+  }
+
+  &__steps {
+    .van-step__icon--active {
+      .font--t4();
+    }
+
+    .van-steps--vertical {
+      // padding-left: 15px;
+    }
+
+    .van-step--vertical .van-step__circle-container {
+      // transform: translateY(-50%);
+    }
+  }
+
+  &__label {
+    margin-right: 12px;
+    width: 6.2em;
+    .font--t5();
+    color: @theme-grey;
+    &--required {
+      &::after {
+        content: "*";
+        color: @theme-red;
+        font-weight: bold;
+        margin-left: 2px;
+      }
+    }
+  }
+}

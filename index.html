@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <title>市场供需</title>
+  <!-- Main library -->
+  <!-- <script src="./three/three.min.js"></script> -->
+
+  <!-- Helpers -->
+  <!-- <script src="./three/projector.js"></script> -->
+  <!-- <script src="./three/canvas-renderer.js"></script> -->
+  <script src="//res2.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
+  <!-- 聊天 -->
+  <!-- <script src="//im.ztesa.com.cn/timTool.js.umd.js"></script> -->
+  <!-- <script src="./timTool.js.umd.js"></script> -->
+  <!-- <link rel="stylesheet" href="./style.css"> -->
+
+  <!-- 腾讯地图 -->
+  <script src="https://map.qq.com/api/js?v=2.exp&key=YXUBZ-TYHK5-5VXII-QX555-DGFWK-DGBMB"></script>
+  <script src="https://mapapi.qq.com/web/mapComponents/geoLocation/v/geolocation.min.js"></script>
+
+  <!-- 高德地图-->
+  <!-- <script
+    src="//webapi.amap.com/maps?v=2.0&key=fdd7ec58beea29fd69bf784f5a234620&plugin=AMap.MarkerCluster,AMap.Driving,AMap.AutoComplete,AMap.Geolocation"></script>  -->
+
+  <script
+    src="//webapi.amap.com/maps?v=2.0&key=fdd7ec58beea29fd69bf784f5a234620&plugin=AMap.MarkerCluster,AMap.Driving,AMap.AutoComplete,AMap.Geolocation"></script>
+  <script
+    src="//webapi.amap.com/maps?v=2.0&key=fdd7ec58beea29fd69bf784f5a234620&plugin=AMap.MarkerCluster,AMap.Driving,AMap.AutoComplete,AMap.Geolocation"></script>
+
+  <!-- hls.js -->
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/hls.js/1.1.1/hls.min.js"></script> -->
+  <!-- <script src="https://apis.map.qq.com/tools/geolocation/min?key=YXUBZ-TYHK5-5VXII-QX555-DGFWK-DGBMB&referer=共享冷库"></script> -->
+
+
+  <script src="https://cdn.ztesa.com.cn/fundebug@2.8.0/fundebug.min.js"
+    apikey="04e312d84657b099eea65da6d608325c26e7b6969f0e3c48bff436567cd5f115" setHttpBody="true"
+    crossorigin="anonymous"></script>
+
+  <script>
+    (function (w, d, s, q, i) {
+      w[q] = w[q] || [];
+      var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s);
+      j.async = true;
+      j.id = "beacon-aplus";
+      j.src = "https://d.alicdn.com/alilog/mlog/aplus.js?id=202951085";
+      f.parentNode.insertBefore(j, f);
+    })(window, document, "script", "aplus_queue");
+    // 如果是私有云部署还需要在上面那段 JS 后面紧接着添加日志域名埋点 // 通常私有云日志服务端域名类似于：quickaplus-web-api.xxx.com.cn ，具体 域名需找交付同学要
+    aplus_queue.push({
+      action: "aplus.setMetaInfo",
+      arguments: ["aplus-rhost-v", "alog.zjzwfw.gov.cn"],
+    });
+    aplus_queue.push({
+      action: "aplus.setMetaInfo",
+      arguments: ["aplus-rhost-g", "alog.zjzwfw.gov.cn"],
+    }); // 这个会落到 app_key 字段上
+    aplus_queue.push({
+      action: "aplus.setMetaInfo",
+      arguments: ["appId", "60506758"],
+    });
+    aplus_queue.push({
+      action: 'aplus.sendPV',
+      arguments: ['miniAppId', '7dgl7i67+2001972512+jfjfwb'],
+    })
+    aplus_queue.push({
+      action: 'aplus.sendPV',
+      arguments: ['miniAppName', '共享冷库'],
+    })
+  </script>
+  <style>
+    @font-face {
+      font-family: ZhenyanGB;
+      src: url("./zhenyan.otf");
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <router-view></router-view>
+  </div>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+
+</html>

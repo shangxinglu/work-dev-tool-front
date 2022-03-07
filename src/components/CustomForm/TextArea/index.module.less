@@ -1,0 +1,59 @@
+.default {
+  @import "@/assets/css/standard.less";
+  :global {
+    .van-cell {
+      margin-top: 17px;
+      display: block;
+      padding: 0;
+    }
+
+    .van-field--disabled {
+      .van-field__label {
+        color: @theme-black;
+      }
+      .van-field {
+        color: @theme-black;
+
+        &__control {
+          &:disabled {
+            color: @theme-black;
+            -webkit-text-fill-color: @theme-black;
+          }
+        }
+      }
+    }
+
+    .van-field {
+      &--disabled {
+        color: @theme-black;
+      }
+      &__value {
+        margin-top: 17px;
+        padding: 10px;
+        height: 140px;
+        background-color: @bg-grey;
+        border: 1px solid @border-grey;
+        border-radius: 6px;
+      }
+      &__control {
+        height: 100px;
+
+        .font--t5();
+        color: @theme-black;
+      }
+    }
+
+    .van-field__label--required {
+      &::before {
+        content: "";
+      }
+
+      &::after {
+        content: "*";
+        color: @theme-red;
+        font-weight: bold;
+        margin-left: 2px;
+      }
+    }
+  }
+}

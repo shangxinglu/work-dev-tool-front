@@ -1,0 +1,2 @@
+// 腾讯地图KEY
+export const KEY = 'YXUBZ-TYHK5-5VXII-QX555-DGFWK-DGBMB'

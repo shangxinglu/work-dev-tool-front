@@ -1,0 +1,32 @@
+.options {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+}
+
+.sort {
+  &--reverse {
+    &:global(.van-dropdown-menu__title) {
+      color: @theme-green;
+
+      &:after {
+        margin-top: -1px;
+        transform: rotate(135deg);
+        border-color: transparent transparent currentColor currentColor;
+      }
+    }
+  }
+
+  &--default {
+  }
+  &--positive {
+    &:global(.van-dropdown-menu__title) {
+      color: @theme-green;
+      &:after {
+        border-color: transparent transparent currentColor currentColor;
+      }
+    }
+  }
+}

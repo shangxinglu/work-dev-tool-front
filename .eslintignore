@@ -1,0 +1,7 @@
+static
+plugins
+store
+.eslintrc.js
+nuxt.config.js
+node_modules
+dist

@@ -1,0 +1,17 @@
+.select {
+  :global {
+    .van-field__label {
+      color: @theme-grey;
+    }
+    .van-cell::after {
+      content: none;
+    }
+    .van-field__control:disabled {
+      color: @theme-black;
+      -webkit-text-fill-color: @theme-black;
+      &::placeholder {
+        -webkit-text-fill-color: currentColor;
+      }
+    }
+  }
+}
