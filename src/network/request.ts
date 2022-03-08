@@ -3,7 +3,12 @@ import qs from "qs";
 
 const baseConfig: RequestInit = {
     method: 'GET',
+    headers: {
+        'Content-Type': 'application/json'
+    }
 }
+
+type Body = string | undefined | object | null | BodyInit;
 
 /**
  * @description 标准化响应
@@ -13,12 +18,12 @@ async function normalRes(res: Response) {
     if (statusCode === 401) {
         return Promise.reject();
     }
-    const resData = await res.json();
 
-    return resData
+    const resData = await res.json();
+    return resData.data;
 }
 
-function normalQuery(params): string {
+function normalQuery(params?: string | object): string {
     let query = ''
     if (!params) return query;
     if (typeof params === 'string') {
@@ -29,7 +34,8 @@ function normalQuery(params): string {
     return query
 }
 
-function normalBody(body: string | object | FormData): string | FormData {
+function normalBody(body: Body): null | string | FormData {
+    if (!body) return null;
     if (typeof body === 'string') {
         return body
     } else if (body instanceof FormData) {
@@ -40,6 +46,7 @@ function normalBody(body: string | object | FormData): string | FormData {
 }
 
 interface RequestOption extends RequestInit {
+
     params?: {
         [key: string]: any
     } | string
@@ -47,12 +54,12 @@ interface RequestOption extends RequestInit {
 
 
 
-export default function request(url, options: RequestOption = {}) {
+export default function request(url: string, options: RequestOption = {}): Promise<any> {
     return new Promise(async (resolve, reject) => {
 
-        const { params } = options;
+        const params = options.params;
         const query = normalQuery(params);
-        options.body = normalBody(options.body) || null;
+        options.body = normalBody(options.body || '') || null;
 
         const res = await fetch(url + query, {
             ...baseConfig,
@@ -63,12 +70,12 @@ export default function request(url, options: RequestOption = {}) {
         }) as Response
 
         const resData = await normalRes(res);
-        return resData;
+        resolve(resData);
 
     })
 }
 
-export const Get = (url: string, params, options: RequestOption = {}) => {
+export const Get = (url: string, params: string | object, options: RequestOption = {}) => {
     options.params = params;
     return request(url, {
         ...options,
@@ -76,21 +83,21 @@ export const Get = (url: string, params, options: RequestOption = {}) => {
     })
 }
 
-export function Post(url: string, body, options: RequestOption = {}) {
+export function Post(url: string, body: Body, options: RequestOption = {}) {
 
 
     return request(url, {
         ...options,
         method: 'POST',
-        body,
+        body: body as string | FormData,
     })
 }
 
-export function Put(url: string, body, options: RequestOption = {}) {
+export function Put(url: string, body: Body, options: RequestOption = {}) {
     return request(url, {
         ...options,
         method: 'PUT',
-        body,
+        body: body as string | FormData,
     })
 }
 

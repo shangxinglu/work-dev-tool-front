@@ -28,31 +28,14 @@ export default defineConfig({
   base: './',
   server: {
     host: '0.0.0.0',
-    port: 3000,
+    port: 1111,
     proxy: {
       '/api': {
-        // 开发环境 
-        // target: 'http://192.167.5.201:7041/msapp/',
-        // 测试环境
-        target: 'http://192.167.5.236:30041/msapp/',
-        // target: 'http://nongqibang.com:17042/msapp/',
+        target: 'http://127.0.0.1:7001',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, '')
       },
-      '/public': {
-        // 开发环境 
-        // target: 'http://192.167.5.201:7041/subsidyapp/',
-        // 测试环境
-        target: 'http://nongqibang.com:17042/database/',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/public/, '')
-      },
-      '/msapp': {
-        // 开发环境
-        target: 'http://192.167.5.201:7041/msapp/',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/msapp/, '')
-      },
+
     }
   },
   plugins: [...plugins, vue(), vuejsx({ enableObjectSlots: true }),

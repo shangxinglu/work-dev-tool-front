@@ -197,3 +197,57 @@ export const getImageArr = (string: string | null): string[] => {
   if (!string) return []
   return string.split(',').filter(item => item)
 }
+
+interface IStringTransform {
+  format: (str: string) => string;
+}
+
+/**
+ * @description 字符串转换
+ */
+export const stringTransform = (str: string, options: IStringTransform) => {
+  const { format } = options
+  const result = str.toLocaleLowerCase().replace(/(\s\w)/g, (match: string) => {
+
+    return format(match)
+  });
+  return result
+}
+
+/**
+ * @description 转驼峰
+ */
+export const turnHump = (str: string, type: 'small' | 'big' = 'small'): string => {
+  str = str.trim().toLowerCase();
+
+
+  let result = stringTransform(str, {
+    format(match: string) {
+      return match.trim().toLocaleUpperCase()
+    }
+  })
+  if (type === 'big') {
+    result = result.replace(result[0], result[0].toUpperCase());
+  }
+  return result
+}
+
+export const turnCrossbar = (str: string): string => {
+  str = str.trim().toLowerCase();
+
+
+  let result = stringTransform(str, {
+    format(match: string) {
+      return '-' + match.trim()
+    }
+  })
+
+  return result
+}
+
+export const copy = (str: string) => {
+  console.log(str);
+
+  const { clipboard } = navigator;
+  return clipboard.writeText(str);
+}

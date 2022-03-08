@@ -10,6 +10,7 @@ export const PageProps = {
     },
     bgColor: {
         type: String,
+        default: '#f4f4f4'
     },
     /**
      * @description 是否是tabbar页面
