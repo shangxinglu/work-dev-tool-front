@@ -207,8 +207,8 @@ interface IStringTransform {
  */
 export const stringTransform = (str: string, options: IStringTransform) => {
   const { format } = options
-  const result = str.toLocaleLowerCase().replace(/(\s\w)/g, (match: string) => {
-
+  const result = str.toLocaleLowerCase().replace(/((?:\s|\-)\w)/g, (match: string) => {
+    match = match.replace(/-/, '');
     return format(match)
   });
   return result
@@ -223,6 +223,7 @@ export const turnHump = (str: string, type: 'small' | 'big' = 'small'): string =
 
   let result = stringTransform(str, {
     format(match: string) {
+
       return match.trim().toLocaleUpperCase()
     }
   })

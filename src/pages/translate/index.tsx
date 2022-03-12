@@ -59,6 +59,9 @@ export default defineComponent({
                     <div class={['ml-15']}>
                         <Button type="danger" onClick={this.onClickClear}>清除</Button>
                     </div>
+                    <div class={['ml-15']}>
+                        <Button type="primary" onClick={() => this.onCopy(this.text)}>复制</Button>
+                    </div>
 
 
                 </div>
